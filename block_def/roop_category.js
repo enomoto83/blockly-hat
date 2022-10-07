@@ -1,3 +1,5 @@
+//作成、変更ファイル
+
 //繰り返し
 Blockly.Blocks.repeat = {
     init() {

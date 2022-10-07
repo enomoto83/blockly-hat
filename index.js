@@ -1,9 +1,11 @@
+//main定義エリア
 const workspace = Blockly.inject(
   'blocklyDiv', {
     toolbox: document.getElementById('toolbox_main'),
     trashcan: true,
   },
 );
+//関数定義エリア
 const workspace_function = Blockly.inject(
   'blocklyDiv_function', {
     toolbox: document.getElementById('toolbox_function'),
@@ -11,8 +13,9 @@ const workspace_function = Blockly.inject(
   },
 );
 
-function showCode() {
   // Hat言語の出力
+function showCode() {
+
   Blockly.Hat.INFINITE_LOOP_TRAP = null;
   const pre = document.getElementById('HatCode');
 
@@ -49,7 +52,7 @@ function runCode() {
   // Hat言語の実行
   HatInterpreter.startCode("Run", pre.value, "main");
 }
-
+//ボタン処理
 document.getElementById('showCode').addEventListener('click', showCode, false);
 document.getElementById('runCode').addEventListener('click', runCode, false);
 

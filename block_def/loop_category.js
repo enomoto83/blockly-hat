@@ -1,3 +1,4 @@
+//作成、変更ファイル
 // 比較演算子
 Blockly.Blocks.arg_compare = {
     init() {
