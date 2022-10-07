@@ -15,14 +15,14 @@ const workspace_function = Blockly.inject(
 
   // Hat言語の出力
 function showCode() {
-
+  event.preventDefault();
   Blockly.Hat.INFINITE_LOOP_TRAP = null;
   const pre = document.getElementById('HatCode');
-
+  pre.innerHTML = ""; //hatコードエリア初期化
   // main関数エリア
   pre.innerHTML = "(include \"util.sch\")";
   pre.innerHTML += "\n";
-  pre.innerHTML = "(defineCPS main ^()";
+  pre.innerHTML += "(defineCPS main ^()";
   pre.innerHTML += "\n";
   pre.innerHTML += Blockly.Hat.workspaceToCode(workspace);
   pre.innerHTML += "\n";
