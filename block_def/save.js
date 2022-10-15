@@ -1,3 +1,5 @@
+//全消去、保存、復元
+
 function clearBlocks() {
     if (window.confirm('プログラムを消去してよいですか?')) {
       workspace.clear();
@@ -64,7 +66,6 @@ if ('localStorage' in window) {
     if (window.localStorage[savedBlockPrefix + name]) {
       name = savedBlockPrefix + name;
       var xml = Blockly.Xml.textToDom(window.localStorage[name]);
-      workspace_function.clear();
       Blockly.Xml.domToWorkspace(xml, workspace_function);
     } else {
       window.alert('Error: ' + name + ' がありません');
