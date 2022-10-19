@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Blockly - Hat</title>
+  <!--大村css-->
   <link rel="stylesheet" media="all" href="./style.css">
+  <!--オセロcss
+  <link rel="stylesheet" href="style.css">-->
   <script src='https://cdn.jsdelivr.net/npm/store-js@2.0.4/dist/store.legacy.min.js'></script>
   <!-- <script src="hat.js"></script> -->
   <!-- <script src="bundle.js"></script> -->
@@ -53,9 +57,9 @@
 	<textarea id="text_hoge" class="lined" cols="40" rows="6" spellcheck="false"></textarea> -->
 
   <div id="blockly">
-    <h2>main定義エリア</h2>
+    <h1>main定義エリア</h1>
   <div id="blocklyDiv"></div>
-  <h2>関数定義エリア</h2>
+  <h1>関数定義エリア</h1>
   <div id="blocklyDiv_function"></div>
 
   <!--main定義エリア-->
@@ -374,17 +378,17 @@
 
   <div id="code_area">
     <!-- <div class="js_area">
-      <h2>JavaScript</h2>
+      <h1>JavaScript</h1>
       <pre id='jsCode'>
 
       </pre>
     </div> -->
     <div class="hat_area">
-      <h2>Hatコード</h2>
+      <h1>Hatコード</h1>
       <textarea class="outputcode" id="HatCode"></textarea>
     </div>
     <div class="hat_output_area">
-      <h2>Hat出力エリア</h2>
+      <h1>Hat出力エリア</h1>
       <textarea style="font-size:24px;" class="outputcode" id="terminal"></textarea>
     </div>
   </div>
@@ -469,7 +473,30 @@
 
 
 
-  
+  <main>
+    <!--<div id="modal">
+        <h2>オセロ</h2>
+            <p>マスの数を選択してください</p>
+            <div id="menu">
+                <p id="4" class="select">4x4</p>
+                <p id="6" class="select">6x6</p>
+                <p id="8" class="select">8x8</p>
+            </div>
+    </div><-->
+    <div id="restartBtn" class="hide">クリックするとスタート画面に戻ります</div>
+    <div id="content">
+
+        <table id="board"></table>
+    </div>
+    <div id="counter" class="hide">
+        <div id="numBlack"></div>
+        <h2></h2>
+        <div id="numWhite"></div>
+    </div>
+    <button onclick="boardnum(4)"    id="boardn"   >4*4</button>
+    <button onclick="boardnum(6)"    id="boardn"   >6*6</button>
+    <button onclick="boardnum(8)"    id="boardn"   >8*8</button>
+</main>
 </body>
 
 </html>
@@ -489,6 +516,9 @@
 <script src="index.js"></script>
 <script src="sexpr-plus.js"></script>
 <script src="hat.js"></script>
+
+<!--オセロ-->
+<script src="othello.js"></script>
 
 <!-- 作成したブロック定義ファイル -->
 <script src="block_def/standard_category.js"></script>
