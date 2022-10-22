@@ -24,7 +24,6 @@ Blockly.JavaScript.js_sample = function (block) {
 
 // Hatコードも同時に生成する場合は以下の関数のコメントアウトを外して修正
 
- Blockly.Hat.string = function (block) {
-     const text_num = block.getFieldValue('string');
-     return "\"" + text_num + "\"";
+ Blockly.Hat.js_sample = function (block) {
+     return "aaaaa";
  };
