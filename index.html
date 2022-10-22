@@ -76,6 +76,7 @@
       <!--JavaScriptのサンプル ここから-->
       <category name="JSサンプル" colour="0">
         <block type="js_sample"></block>
+        <block type="othello_put"></block>
       </category>
       <!--JavaScriptのサンプル ここまで-->
 
@@ -408,7 +409,7 @@
       <h1>Hat出力エリア</h1>
       <textarea style="font-size:24px;" class="outputcode" id="terminal"></textarea>
     </div>
-    <!--JSコード出力エリア-->
+    <!--JSコード出力エリア hide可能-->
     <div class="js_area">
       <h1>JSコード</h1>
       <textarea class="outputcode" id="JSCode"></textarea>
@@ -540,14 +541,18 @@
 <script src="sexpr-plus.js"></script>
 <script src="hat.js"></script>
 
-<!-- 出力と実行(Hat) -->
-<!-- <script src="assets/js/blockly_hat.js"></script> -->
+<!--上有線-->
+  <!-- 出力と実行(JS) -->
+  <script src="assets/js/blockly_javascript.js"></script>
 
-<!-- 出力と実行(JS) -->
-<script src="assets/js/blockly_javascript.js"></script>
+  <!-- 出力と実行(Hat) -->
+  <script src="assets/js/blockly_hat.js"></script>
+
+
 
 <!-- JavaScriptのブロックを定義したサンプルファイル -->
 <script src="block_def/javascript_function.js"></script>
+<script src="block_def/othello_put.js"></script>
 
 <!--オセロ-->
 <script src="othello.js"></script>

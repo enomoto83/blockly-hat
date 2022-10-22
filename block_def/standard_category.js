@@ -56,6 +56,10 @@ Blockly.Hat.num = function (block) {
   const num = block.getFieldValue('num');
   return num
 };
+Blockly.JavaScript.num = function (block) {
+  const num = block.getFieldValue('num');
+  return num
+};
 
 // 数値 ステートメント
 Blockly.Blocks.num_statement = {

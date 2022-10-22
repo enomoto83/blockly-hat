@@ -1,24 +1,104 @@
 Blockly.defineBlocksWithJsonArray(
-  //ここにJSONファイルの内容をコピー 
+  /* ここにJSONファイルの内容をコピー */
   [{
     "type": "othello_put",
-    "message0": "オセロ盤面 : ( %1 %2 , %3 %4 ) に %5 %6 %7 を置く",
+    "message0": "オセロ盤面 : ( %1 %2 %3 , %4 %5 %6 ) に %7 %8 %9 を置く",
     "args0": [
       {
         "type": "input_dummy"
       },
       {
-        "type": "input_value",
+        "type": "field_dropdown",
         "name": "board_x",
-        "check": "Number"
+        "options": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "4",
+            "4"
+          ],
+          [
+            "5",
+            "5"
+          ],
+          [
+            "6",
+            "6"
+          ],
+          [
+            "7",
+            "7"
+          ],
+          [
+            "x",
+            "x"
+          ]
+        ]
       },
       {
         "type": "input_dummy"
       },
       {
-        "type": "input_value",
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_dropdown",
         "name": "board_y",
-        "check": "Number"
+        "options": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "4",
+            "4"
+          ],
+          [
+            "5",
+            "5"
+          ],
+          [
+            "6",
+            "6"
+          ],
+          [
+            "7",
+            "7"
+          ],
+          [
+            "y",
+            "y"
+          ]
+        ]
+      },
+      {
+        "type": "input_dummy"
       },
       {
         "type": "input_dummy"
@@ -29,11 +109,11 @@ Blockly.defineBlocksWithJsonArray(
         "options": [
           [
             "黒",
-            "black"
+            "BLACK"
           ],
           [
             "白",
-            "white"
+            "WHITE"
           ]
         ]
       },
@@ -50,12 +130,11 @@ Blockly.defineBlocksWithJsonArray(
   }]
 );
 
-
 Blockly.JavaScript['othello_put'] = function(block) {
-  var value_board_x = Blockly.JavaScript.valueToCode(block, 'board_x', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_board_y = Blockly.JavaScript.valueToCode(block, 'board_y', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_board_x = block.getFieldValue('board_x');
+  var dropdown_board_y = block.getFieldValue('board_y');
   var dropdown_color = block.getFieldValue('color');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'firstCheck(value_board_x,value_board_y,dropdown_color);\n';
+  var code = 'firstCheck('+dropdown_board_x+','+dropdown_board_y+','+dropdown_color+')\n';
   return code;
 };

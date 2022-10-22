@@ -1,4 +1,4 @@
-/*const workspace = Blockly.inject(
+const workspace = Blockly.inject(
   'blocklyDiv', {
   toolbox: document.getElementById('toolbox_main'),
   trashcan: true,
@@ -9,16 +9,16 @@ const workspace_function = Blockly.inject(
   toolbox: document.getElementById('toolbox_function'),
   trashcan: true,
 },
-);*/
+);
 
-function showCode() {
+function JSshowCode() {
   const pre = document.getElementById('JSCode');
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   pre.innerHTML = ''; // textarea初期化
   pre.innerHTML += Blockly.JavaScript.workspaceToCode(workspace);
 }
 
-function runCode() {
+function JSrunCode() {
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
   const pre = document.getElementById('JSCode');
@@ -26,8 +26,8 @@ function runCode() {
   eval(pre.value);
 }
 
-document.getElementById('showCode').addEventListener('click', showCode, false);
-document.getElementById('runCode').addEventListener('click', runCode, false);
+document.getElementById('showCode').addEventListener('click', JSshowCode, false);
+document.getElementById('runCode').addEventListener('click', JSrunCode, false);
 
 var term = TATerm("terminal");
 function printPrompt() {
