@@ -1,4 +1,4 @@
-const workspace = Blockly.inject(
+/*const workspace = Blockly.inject(
   'blocklyDiv', {
   toolbox: document.getElementById('toolbox_main'),
   trashcan: true,
@@ -9,7 +9,7 @@ const workspace_function = Blockly.inject(
   toolbox: document.getElementById('toolbox_function'),
   trashcan: true,
 },
-);
+);*/
 
 function showCode() {
   const pre = document.getElementById('JSCode');
