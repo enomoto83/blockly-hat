@@ -1,5 +1,6 @@
 "use strict";
 
+//オセロ盤面左上(x,y) = (0,0)
 const BLACK = 1,
   WHITE = -1;
 let data = [];
@@ -12,6 +13,7 @@ document.querySelectorAll(".select").forEach((value) => {
   value.addEventListener("click", start);
 });
 let cells = 8; // マスの数
+const test = document.getElementById("test");
 
 // スタート画面でマスの数が選択された時の処理
 /*function start(e) {
@@ -28,6 +30,12 @@ function boardnum(num){
   turn = true;
   init();
 }
+
+test.addEventListener('click',function(){
+  //firstCheck(0,1,BLACK);
+  console.log(data);
+});
+
 // 初期化
 function init() {
   for (let i = 0; i < cells; i++) {
@@ -52,6 +60,7 @@ function init() {
       putDisc(2, 2, WHITE);
       putDisc(1, 2, BLACK);
       putDisc(2, 1, BLACK);
+      data[4] = [0, 0, 0, 0, 0, 0, 0, 0];
       break;
     case 6:
       board.setAttribute('class', '');     
@@ -149,7 +158,12 @@ function clicked() {
   const color = turn ? BLACK : WHITE;
   const y = this.parentNode.rowIndex;
   const x = this.cellIndex;
-  // マスに置けるかチェック
+
+  firstCheck(x,y,color);
+
+}
+//マスにおけるかチェック
+function firstCheck(x,y,color){
   if (data[y][x] !== 0) {
     return;
   }
@@ -161,7 +175,7 @@ function clicked() {
     turn = !turn;
   }
   showTurn();
-}
+};
 
 // 置いたマスの周囲8方向をチェック
 function checkPut(x, y, color) {
