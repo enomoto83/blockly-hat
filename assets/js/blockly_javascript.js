@@ -24,11 +24,11 @@ function runCode() {
   const pre = document.getElementById('JSCode');
 
   eval(pre.value);
-}*/
+}
 
 document.getElementById('showCode').addEventListener('click', showCode, false);
 document.getElementById('runCode').addEventListener('click', runCode, false);
-
+*/
 var term = TATerm("terminal");
 function printPrompt() {
   term.print("OK> ");

@@ -33,7 +33,7 @@ function showCode() {
   pre.innerHTML += Blockly.Hat.workspaceToCode(workspace_function);
 
   const preJS = document.getElementById('JSCode');
-  Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+  //Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   preJS.innerHTML = ''; // textarea初期化
   preJS.innerHTML += Blockly.JavaScript.workspaceToCode(workspace);
 }
