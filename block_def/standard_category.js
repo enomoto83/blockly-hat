@@ -187,6 +187,12 @@ Blockly.Hat.print = function (block) {
   OPERATOR += ") ^()";
   return OPERATOR + "\n";
 };
+/*Blockly.JavaScript.print = function (block) {
+  const arg = Blockly.JavaScript.statementToCode(block, 'arg', Blockly.JavaScript.ORDER_FUNCTION_CALL);
+  let OPERATOR = "alert(" + arg +")";
+  return OPERATOR;
+};*/
+
 
 // インクリメント演算
 Blockly.Blocks.increment_operator = {

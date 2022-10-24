@@ -11,7 +11,7 @@ const workspace_function = Blockly.inject(
 },
 );
 
-function showCode() {
+/*function showCode() {
   const pre = document.getElementById('JSCode');
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   pre.innerHTML = ''; // textarea初期化
@@ -24,7 +24,7 @@ function runCode() {
   const pre = document.getElementById('JSCode');
 
   eval(pre.value);
-}
+}*/
 
 document.getElementById('showCode').addEventListener('click', showCode, false);
 document.getElementById('runCode').addEventListener('click', runCode, false);
