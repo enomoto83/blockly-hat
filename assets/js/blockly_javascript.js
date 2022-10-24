@@ -11,14 +11,14 @@ const workspace_function = Blockly.inject(
 },
 );
 
-function JSshowCode() {
+function showCode() {
   const pre = document.getElementById('JSCode');
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   pre.innerHTML = ''; // textarea初期化
   pre.innerHTML += Blockly.JavaScript.workspaceToCode(workspace);
 }
 
-function JSrunCode() {
+function runCode() {
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
   const pre = document.getElementById('JSCode');
@@ -26,8 +26,8 @@ function JSrunCode() {
   eval(pre.value);
 }
 
-document.getElementById('showCode').addEventListener('click', JSshowCode, false);
-document.getElementById('runCode').addEventListener('click', JSrunCode, false);
+document.getElementById('showCode').addEventListener('click', showCode, false);
+document.getElementById('runCode').addEventListener('click', runCode, false);
 
 var term = TATerm("terminal");
 function printPrompt() {

@@ -14,7 +14,7 @@ const workspace_function = Blockly.inject(
 );
 
   // Hat言語の出力
-function hatShowCode() {
+function showCode() {
   event.preventDefault();
   Blockly.Hat.INFINITE_LOOP_TRAP = null;
   const pre = document.getElementById('HatCode');
@@ -33,7 +33,7 @@ function hatShowCode() {
   pre.innerHTML += Blockly.Hat.workspaceToCode(workspace_function);
 }
 
-function hatRunCode() {
+function runCode() {
   // Hat言語の出力
   Blockly.Hat.INFINITE_LOOP_TRAP = null;
   const pre = document.getElementById('HatCode');
@@ -53,8 +53,8 @@ function hatRunCode() {
   HatInterpreter.startCode("Run", pre.value, "main");
 }
 //ボタン処理
-document.getElementById('showCode').addEventListener('click', hatShowCode, false);
-document.getElementById('runCode').addEventListener('click', hatRunCode, false);
+document.getElementById('showCode').addEventListener('click', showCode, false);
+document.getElementById('runCode').addEventListener('click', runCode, false);
 
 var term=TATerm("terminal");
   function printPrompt( ){
