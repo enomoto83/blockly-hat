@@ -32,10 +32,6 @@ function showCode() {
   pre.innerHTML += "\n\n";
   pre.innerHTML += Blockly.Hat.workspaceToCode(workspace_function);
 
-  const preJS = document.getElementById('JSCode');
-  //Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-  preJS.innerHTML = ''; // textarea初期化
-  preJS.innerHTML += Blockly.JavaScript.workspaceToCode(workspace);
 }
 
 function runCode() {
@@ -57,11 +53,6 @@ function runCode() {
   // Hat言語の実行
   HatInterpreter.startCode("Run", pre.value, "main");
 
-  //Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-
-  const preJS = document.getElementById('JSCode');
-
-  eval(preJS.value);
 }
 //ボタン処理
 document.getElementById('showCode').addEventListener('click', showCode, false);
