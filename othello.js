@@ -1,6 +1,7 @@
 "use strict";
 
 //オセロ盤面左上(x,y) = (0,0)
+//data[y][x]に注意
 const BLACK = 1,
   WHITE = -1;
 let data = [];
@@ -31,11 +32,20 @@ function boardnum(num){
   init();
 }
 
-test.addEventListener('click',function(){
-  //firstCheck(0,1,BLACK);
-  console.log(data);
-});
+/*sllep関数
+function sleep(waitMsec){
+  var startMsec = new Date();
 
+  while(new Date() - startMsec < waitMsec);
+}*/
+//テスト用ボタン
+test.addEventListener('click',function(){
+  firstCheck(0,1,BLACK);
+  firstCheck(0,0,WHITE);
+  console.log(data);
+  console.log(numBlack.textContent);
+  console.log(numWhite.textContent);
+});
 // 初期化
 function init() {
   for (let i = 0; i < cells; i++) {
@@ -98,8 +108,11 @@ function putDisc(x, y, color) {
 function showTurn() {
   h2.textContent = turn ? "黒の番です" : "白の番です";
   let numWhite = 0,
-    numBlack = 0,
-    numEmpty = 0;
+  numBlack = 0,
+  numEmpty = 0;
+  
+
+  //盤面の石の数を数える
   for (let x = 0; x < cells; x++) {
     for (let y = 0; y < cells; y++) {
       if (data[x][y] === WHITE) {
@@ -160,7 +173,6 @@ function clicked() {
   const x = this.cellIndex;
 
   firstCheck(x,y,color);
-
 }
 //マスにおけるかチェック
 function firstCheck(x,y,color){
@@ -175,6 +187,36 @@ function firstCheck(x,y,color){
     turn = !turn;
   }
   showTurn();
+};
+
+
+
+//次に置く候補と置いた後の盤面(分解可能)
+function canPut(){
+  const COLOR = turn ? BLACK : WHITE;
+  //ディープコピー
+  //let copyBoard = JSON.parse(JSON.stringify(data));
+  //次に置く候補
+  let can_put = [];
+  //置いた後の盤面の情報
+  let after_board = [];
+  for (let x = 0; x < cells; x++) {
+    for (let y = 0; y < cells; y++) {
+      const result = checkPut(x, y, COLOR);
+      if (result.length > 0) {
+        let copyBoard = JSON.parse(JSON.stringify(data));
+        for(let i=0;i<result.length;i++){
+          //rezultをcopyBoard[y][x]に上書き
+          copyBoard[result[i][1]][result[i][0]] = COLOR;
+        };
+        after_board.push(copyBoard);     
+        can_put.push(result);
+      };
+    }
+  }
+  //return after_board;
+  console.log(after_board);
+  //console.log(can_put,COLOR);
 };
 
 // 置いたマスの周囲8方向をチェック
@@ -237,6 +279,7 @@ function checkPut(x, y, color) {
       }
     }
   }
+  
   return reverseDisk;
 }
 

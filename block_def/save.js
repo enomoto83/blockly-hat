@@ -14,6 +14,8 @@ function clearBlocks() {
     /** ローカルストレージに保存するときのキー接頭辞 */
     var savedBlockPrefix = 'bky.prc.saved.';
 
+    //ローカルストレージ削除
+    //localStorage.removeItem("キー名");
 /** ブロックを保存 */
 function saveBlocks() {
 if ('localStorage' in window) {
@@ -66,6 +68,7 @@ if ('localStorage' in window) {
     if (window.localStorage[savedBlockPrefix + name]) {
       name = savedBlockPrefix + name;
       var xml = Blockly.Xml.textToDom(window.localStorage[name]);
+      workspace.clear();
       Blockly.Xml.domToWorkspace(xml, workspace_function);
     } else {
       window.alert('Error: ' + name + ' がありません');
@@ -81,3 +84,4 @@ if ('localStorage' in window) {
       cancelRestoreBlocks();
     }
   }
+  

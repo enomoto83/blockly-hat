@@ -218,7 +218,32 @@ Blockly.Hat.list_variable = function (block) {
 };
 
 
+Blockly.Blocks.list_out_variable = {
+    init() {
+        this.jsonInit({
+            type: "block_type",
+            message0: "リスト: %1",
+            args0: [{
+                type: "field_input",
+                name: "list_name",
+                text: "list_name"
+            }],
+            output : true,
+            tooltip: "",
+            helpUrl: "",
+            colour: 15,
+        });
+    },
+};
 
+Blockly.Hat.list_out_variable = function (block) {
+    const list_name = block.getFieldValue('list_name');
+    
+    let OPERATOR = ""
+    OPERATOR += list_name
+    OPERATOR += "."
+    return OPERATOR;
+};
 
 
 
