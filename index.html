@@ -73,12 +73,11 @@
 
     <!--main定義エリア-->
     <xml id="toolbox_main" style="display: none">
-      <!--JavaScriptのサンプル ここから-->
+      <!-- JavaScriptのサンプル ここから
       <category name="JSサンプル" colour="0">
         <block type="js_sample"></block>
-        <block type="othello_put"></block>
       </category>
-      <!--JavaScriptのサンプル ここまで-->
+      JavaScriptのサンプル ここまで -->
 
       <!--標準ここから-->
       <category name="標準" colour="0">
@@ -212,6 +211,16 @@
         <block type="list_variable"></block>
       </category>
       <!--ここまで-->
+
+      <!--オセロ関係-->
+      <category name="オセロ関係" colour="350">
+        <block type="othello_put"></block>
+        <block type="startothello"></block>
+        <block type="positionprint"></block>
+        <block type="position"></block>
+        <!-- <block type=""></block>
+        <block type=""></block> -->
+      </category>
 
       <!--その他-->
       <category name="その他" colour="350">
@@ -397,6 +406,26 @@
       <!--変数-->
       <category name="変数" colour="300" custom="VARIABLE"></category>
 
+      <!--オセロ関係-->
+      <category name="オセロ関係" colour="350">
+        <block type="othello_put"></block>
+        <block type="startothello"></block>
+        <block type="positionprint"></block>
+        <block type="position"></block>
+        <!-- <block type=""></block>
+        <block type=""></block> -->
+      </category>
+
+      <!--オセロ関係-->
+      <category name="オセロ定義済み関数" colour="350">
+        <block type="moves"></block>
+        <block type="map"></block>
+        <block type="static"></block>
+        <block type="max"></block>
+        <block type="min"></block>
+        <block type="function_composition"></block>
+        <!-- <block type=""></block> -->
+      </category>
     </xml>
     <!--関数定義エリアここまで-->
   </div>
@@ -569,7 +598,9 @@
 <script src="block_def/function_def_category.js"></script>
 <script src="block_def/function_call_category.js"></script>
 <script src="block_def/call_func.js"></script>
+<script src="block_def/othello_block.js"></script>
 <script src="block_def/save.js"></script>
+
 <!-- カテゴリーカスタムファイル -->
 <!-- <script src="CategoryCallback/workspace.js"></script> -->
 

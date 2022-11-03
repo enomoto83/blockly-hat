@@ -325,12 +325,20 @@ Blockly.Blocks.arg = {
     },
 };
 
-Blockly.Hat.arg = function (block) {
+Blockly.Hat.arg = function (block) {    
     let text_num = block.getFieldValue('string') + ".";
     const arg = Blockly.Hat.statementToCode(block, 'arg_elem', Blockly.Hat.ORDER_FUNCTION_CALL);
+    /*
     if(arg != "")
         text_num = arg + "."
     return text_num;
+    */
+    switch(mode){
+    case 1: /* call */
+        return arg+".";
+    case 2: /* define */
+        return text_num+".";
+    }
 };
 
 

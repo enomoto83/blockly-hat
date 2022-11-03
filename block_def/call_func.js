@@ -90,6 +90,14 @@ Blockly.Hat.call_func_andarg2 = function (block) {
     }
 
     let OPERATOR = func_name;
+    switch(mode){
+    case 1: // call
+        return OPERATOR + temporary_num;
+    case 2: // define
+        return OPERATOR + " ^(" + temporary_num +")\n"
+    }
+    /*
     OPERATOR += temporary_num
     return OPERATOR;
+    */
 };

@@ -159,15 +159,21 @@ Blockly.Blocks.def_func = {
     },
 };
 
+mode = 1;
+
 Blockly.Hat.def_func = function (block) {
+    mode = 2;
+    
     const define = Blockly.Hat.statementToCode(block, 'define', Blockly.Hat.ORDER_FUNCTION_CALL);
+
     let return_code = ""    
     if (block.getFieldValue('return') != ""){
         return_code += ". "
         return_code += block.getFieldValue('return')
     }
+    mode = 1 ;
     const do_code = Blockly.Hat.statementToCode(block, 'do', Blockly.Hat.ORDER_FUNCTION_CALL);
-    return define + "\n" + do_code + "\n " + return_code + ")\n";
+    return "(defineCPS "+define + "\n"+ do_code + "\n " + return_code + ")\n";
 };
 
 

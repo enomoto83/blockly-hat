@@ -159,16 +159,16 @@ body {
     z-index: 1;
     opacity: 0;
     position: absolute;
-    width: 100%;
+    width: 25%;
     height: 50px;
     line-height: 50px;
     font-weight: bold;
     cursor: pointer;
-    top: 50%;
-    left: 50%;
+    top: 95%;
+    left: 85%;
     transform: translate(-50%, -110%);
     color: black;
-    background: white;
+    background: rgb(244, 247, 73);
   }
   .hide {
     display: none;
