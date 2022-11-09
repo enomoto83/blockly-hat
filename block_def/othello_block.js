@@ -19,15 +19,15 @@ Blockly.defineBlocksWithJsonArray(
         "options": [
           [
             "4×4",
-            "board4"
+            "4"
           ],
           [
             "6×6",
-            "board6"
+            "6"
           ],
           [
             "8×8",
-            "board8"
+            "8"
           ]
         ]
       },
@@ -43,12 +43,37 @@ Blockly.defineBlocksWithJsonArray(
   }]
 );
 
-Blockly.JavaScript['startothello'] = function(block) {
+Blockly.Hat['startothello'] = function(block) {
   var dropdown_boardnum = block.getFieldValue('boardnum');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...';
+  if(dropdown_boardnum === 4){
+    var code = [];
+    code[0] = [0, 0, 0, 0];
+    code[1] = [0, -1, 1, 0];
+    code[2] = [0, 1, -1, 0];
+    code[3] = [0, 0, 0, 0];
+  }else if(dropdown_boardnum === 6){
+    var code = [];
+    code[0] = [0, 0, 0, 0, 0, 0];
+    code[1] = [0, 0, 0, 0, 0, 0];
+    code[2] = [0, 0, -1, 1, 0, 0];
+    code[3] = [0, 0, 1, -1, 0, 0];
+    code[4] = [0, 0, 0, 0, 0, 0];
+    code[5] = [0, 0, 0, 0, 0, 0];
+  }else if(dropdown_boardnum === 8){
+    var code = [];
+    code[0] = [0, 0, 0, 0, 0, 0, 0, 0];
+    code[1] = [0, 0, 0, 0, 0, 0, 0, 0];
+    code[2] = [0, 0, 0, 0, 0, 0, 0, 0];
+    code[3] = [0, 0, 0, -1, 1, 0, 0, 0];
+    code[4] = [0, 0, 0, 1, -1, 0, 0, 0];
+    code[5] = [0, 0, 0, 0, 0, 0, 0, 0];
+    code[6] = [0, 0, 0, 0, 0, 0, 0, 0];
+    code[7] = [0, 0, 0, 0, 0, 0, 0, 0];
+  }
+
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return code;
 };
 
 
@@ -57,12 +82,29 @@ Blockly.defineBlocksWithJsonArray(
   /* ここにJSONファイルの内容をコピー */
   [{
     "type": "positionprint",
-    "message0": "盤面 : %1 を出力する",
+    "message0": "盤面 : %1 の状態を出力する %2 出力後の手番 : %3",
     "args0": [
       {
         "type": "input_value",
-        "name": "tree",
+        "name": "position",
         "check": "Array"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "next",
+        "options": [
+          [
+            "黒",
+            "BLACK"
+          ],
+          [
+            "白",
+            "WHITE"
+          ]
+        ]
       }
     ],
     "inputsInline": true,
@@ -74,11 +116,15 @@ Blockly.defineBlocksWithJsonArray(
   }]
 );
 Blockly.JavaScript['positionprint'] = function(block) {
-  var value_tree = Blockly.JavaScript.valueToCode(block, 'tree', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_position = Blockly.JavaScript.valueToCode(block, 'position', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_next = block.getFieldValue('next');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
+  let code = 'JavaScript' + '"' + '(function(position, color)';
+  code += '{ reflectBoard('+value_position+','+dropdown_next+');})"\n';
+  code += 'position color ^()'
   return code;
 };
+
 
 
 //moves定義
