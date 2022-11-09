@@ -214,6 +214,7 @@
 
       <!--オセロ関係-->
       <category name="オセロ関係" colour="350">
+        <block type="start"></block>
         <block type="othello_put"></block>
         <block type="startothello"></block>
         <block type="positionprint"></block>
@@ -412,11 +413,11 @@
         <block type="startothello"></block>
         <block type="positionprint"></block>
         <block type="position"></block>
-        <!-- <block type=""></block>
-        <block type=""></block> -->
+        <block type="node"></block>
+        <!--<block type=""></block> -->
       </category>
 
-      <!--オセロ関係-->
+      <!--オセロ定義済み関数-->
       <category name="オセロ定義済み関数" colour="350">
         <block type="moves"></block>
         <block type="map"></block>
@@ -424,6 +425,9 @@
         <block type="max"></block>
         <block type="min"></block>
         <block type="function_composition"></block>
+        <block type="node_create"></block>
+        <block type="return_nodep"></block>
+        <block type="return_nodel"></block>
         <!-- <block type=""></block> -->
       </category>
     </xml>
@@ -564,7 +568,7 @@
 <script src="lib/google-blockly/hat_compressed.js"></script>
 <script src="lib/google-blockly/variable_creation.js"></script>
 <script src="lib/google-blockly/msg/js/ja.js"></script>
-<script src="custom_block.js"></script>
+<!-- <script src="custom_block.js"></script> -->
 
 <!-- 出力と実行 -->
 <script src="taterm.js"></script>

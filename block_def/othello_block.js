@@ -1,7 +1,7 @@
 //ブロック追加時
-// Blockly.defineBlocksWithJsonArray(
+// Blockly.defineBlocksWithJsonArray([
 //   /* ここにJSONファイルの内容をコピー */
-// );
+// ]);
 
 //オセロの初期状態配列情報
 Blockly.defineBlocksWithJsonArray(
@@ -125,7 +125,8 @@ Blockly.defineBlocksWithJsonArray(
   "type": "position",
   "message0": "現在の盤面",
   "inputsInline": true,
-  "output": null,
+  "previousStatement": null,
+  "nextStatement": null,
   "colour": 230,
   "tooltip": "現在の盤面の状態を表す配列を返す",
   "helpUrl": ""
@@ -303,6 +304,175 @@ Blockly.defineBlocksWithJsonArray(
 Blockly.JavaScript['function_composition'] = function(block) {
   var value_arg1 = Blockly.JavaScript.statementToCode(block, 'arg1');
   var value_arg2 = Blockly.JavaScript.statementToCode(block, 'arg2');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
+
+//node
+Blockly.defineBlocksWithJsonArray(
+  /* ここにJSONファイルの内容をコピー */
+  [{
+    "type": "node",
+    "message0": "node",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "盤面状態とサブノードのリストを持つ",
+    "helpUrl": ""
+  }]
+);
+Blockly.JavaScript['node'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
+
+//ゲームスタート
+Blockly.defineBlocksWithJsonArray([
+  /* ここにJSONファイルの内容をコピー */
+  {
+    "type": "start",
+    "message0": "もし %1 ならば %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "NAME",
+        "options": [
+          [
+            "黒の番",
+            "true"
+          ],
+          [
+            "白の番",
+            "false"
+          ]
+        ]
+      },
+      {
+        "type": "input_statement",
+        "name": "turn"
+      }
+    ],
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  }
+]);
+
+Blockly.JavaScript['start'] = function(block) {
+  var dropdown_name = block.getFieldValue('NAME');
+  var statements_turn = Blockly.JavaScript.statementToCode(block, 'turn');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
+
+Blockly.defineBlocksWithJsonArray([
+  /* ここにJSONファイルの内容をコピー */
+  {
+    "type": "node_create",
+    "message0": "ノード生成 %1 position :  %2 listOfPosition :  %3 return node : %4",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "nodeP",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_statement",
+        "name": "nodeL",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_statement",
+        "name": "returnNode",
+        "align": "RIGHT"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "盤面状態とサブノードのリストを持つノードを生成する",
+    "helpUrl": ""
+  }
+]);
+
+Blockly.JavaScript['node_create'] = function(block) {
+  var statements_nodep = Blockly.JavaScript.statementToCode(block, 'nodeP');
+  var statements_nodel = Blockly.JavaScript.statementToCode(block, 'nodeL');
+  var statements_returnnode = Blockly.JavaScript.statementToCode(block, 'returnNode');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
+
+Blockly.defineBlocksWithJsonArray([
+  /* ここにJSONファイルの内容をコピー */
+  {
+    "type": "return_nodep",
+    "message0": "return node position %1 node :  %2 return position :  %3",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "arg_node",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_statement",
+        "name": "returnPos",
+        "align": "RIGHT"
+      }
+    ],
+    "colour": 230,
+    "tooltip": "受け取ったノードのpositionを返す",
+    "helpUrl": ""
+  }
+]);
+
+Blockly.JavaScript['return_nodep'] = function(block) {
+  var statements_arg_node = Blockly.JavaScript.statementToCode(block, 'arg_node');
+  var statements_returnpos = Blockly.JavaScript.statementToCode(block, 'returnPos');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
+
+Blockly.defineBlocksWithJsonArray([
+  /* ここにJSONファイルの内容をコピー */
+  {
+    "type": "return_nodel",
+    "message0": "return node list %1 node :  %2 return list : %3",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "arg_node",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_statement",
+        "name": "return_list",
+        "align": "RIGHT"
+      }
+    ],
+    "colour": 230,
+    "tooltip": "受け取ったノードのリストを返す",
+    "helpUrl": ""
+  }
+]);
+
+Blockly.JavaScript['return_nodel'] = function(block) {
+  var statements_arg_node = Blockly.JavaScript.statementToCode(block, 'arg_node');
+  var statements_return_list = Blockly.JavaScript.statementToCode(block, 'return_list');
   // TODO: Assemble JavaScript into code variable.
   var code = '...;\n';
   return code;

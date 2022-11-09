@@ -130,11 +130,13 @@ Blockly.defineBlocksWithJsonArray(
   }]
 );
 
-Blockly.JavaScript['othello_put'] = function(block) {
+Blockly.Hat['othello_put'] = function(block) {
   var dropdown_board_x = block.getFieldValue('board_x');
   var dropdown_board_y = block.getFieldValue('board_y');
   var dropdown_color = block.getFieldValue('color');
   // TODO: Assemble JavaScript into code variable.
-  var code = 'firstCheck('+dropdown_board_x+','+dropdown_board_y+','+dropdown_color+')\n';
+  let code = 'Javascript' + '"' + '(function(x, y, color){return ';
+  code += 'firstCheck('+dropdown_board_x+','+dropdown_board_y+','+dropdown_color+');\n';
+  code += '}"'
   return code;
 };

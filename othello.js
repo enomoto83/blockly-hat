@@ -3,8 +3,9 @@
 //オセロ盤面左上(x,y) = (0,0)
 //data[y][x]に注意
 const BLACK = 1,
-  WHITE = -1;
+ WHITE = -1;
 let data = [];
+let hatData = [];
 let turn = true;
 const board = document.getElementById("board");
 const h2 = document.querySelector("h2");
@@ -32,12 +33,6 @@ function boardnum(num){
   init();
 }
 
-/*sllep関数
-function sleep(waitMsec){
-  var startMsec = new Date();
-
-  while(new Date() - startMsec < waitMsec);
-}*/
 //テスト用ボタン
 test.addEventListener('click',function(){
   firstCheck(0,1,BLACK);
@@ -70,7 +65,11 @@ function init() {
       putDisc(2, 2, WHITE);
       putDisc(1, 2, BLACK);
       putDisc(2, 1, BLACK);
-      data[4] = [0, 0, 0, 0, 0, 0, 0, 0];
+      data.splice(4,1);
+      data.splice(4,1);
+      data.splice(4,1);
+      data.splice(4,1);
+      hatData = JSON.parse(JSON.stringify(data));
       break;
     case 6:
       board.setAttribute('class', '');     
@@ -79,14 +78,17 @@ function init() {
       putDisc(3, 3, WHITE);
       putDisc(2, 3, BLACK);
       putDisc(3, 2, BLACK);
+      data.splice(6,1);
+      data.splice(6,1);
+      hatData = JSON.parse(JSON.stringify(data));
       break;
     case 8:
       board.setAttribute('class', '');
-
       putDisc(3, 3, WHITE);
       putDisc(4, 4, WHITE);
       putDisc(3, 4, BLACK);
       putDisc(4, 3, BLACK);
+      hatData = JSON.parse(JSON.stringify(data));
   }
   showTurn();
 }
@@ -126,6 +128,7 @@ function showTurn() {
       }
     }
   }
+
   document.getElementById("numBlack").textContent = numBlack;
   document.getElementById("numWhite").textContent = numWhite;
 
@@ -179,7 +182,7 @@ function firstCheck(x,y,color){
   if (data[y][x] !== 0) {
     return;
   }
-  const result = checkPut(x, y, color);
+  const result = checkPut(x, y, color,data);
   if (result.length > 0) {
     result.forEach((value) => {
       putDisc(value[0], value[1], color);
@@ -189,38 +192,8 @@ function firstCheck(x,y,color){
   showTurn();
 };
 
-
-
-//次に置く候補と置いた後の盤面(分解可能)
-function canPut(){
-  const COLOR = turn ? BLACK : WHITE;
-  //ディープコピー
-  //let copyBoard = JSON.parse(JSON.stringify(data));
-  //次に置く候補
-  let can_put = [];
-  //置いた後の盤面の情報
-  let after_board = [];
-  for (let x = 0; x < cells; x++) {
-    for (let y = 0; y < cells; y++) {
-      const result = checkPut(x, y, COLOR);
-      if (result.length > 0) {
-        let copyBoard = JSON.parse(JSON.stringify(data));
-        for(let i=0;i<result.length;i++){
-          //rezultをcopyBoard[y][x]に上書き
-          copyBoard[result[i][1]][result[i][0]] = COLOR;
-        };
-        after_board.push(copyBoard);     
-        can_put.push(result);
-      };
-    }
-  }
-  //return after_board;
-  console.log(after_board);
-  //console.log(can_put,COLOR);
-};
-
 // 置いたマスの周囲8方向をチェック
-function checkPut(x, y, color) {
+function checkPut(x, y, color,data) {
   let dx, dy;
   const opponentColor = color == BLACK ? WHITE : BLACK;
   let tmpReverseDisk = [];
@@ -287,7 +260,7 @@ function checkPut(x, y, color) {
 function checkReverse(color) {
   for (let x = 0; x < cells; x++) {
     for (let y = 0; y < cells; y++) {
-      const result = checkPut(x, y, color);
+      const result = checkPut(x, y, color,data);
       //console.log(result);
       if (result.length > 0) {
         return true;
@@ -315,3 +288,147 @@ function restartBtn() {
 /*function showAnime() {
   h2.animate({ opacity: [0, 1] }, { duration: 500, iterations: 4 });
 }*/
+
+
+
+//次に置く候補と置いた後の盤面(分解可能)
+function canPut(data){
+  const COLOR = turn ? BLACK : WHITE;
+  //ディープコピー
+  //let copyBoard = JSON.parse(JSON.stringify(data));
+  //次に置く候補
+  let can_put = [];
+  if(data.length != cells){
+    window.alert("配列のサイズを確認してください")
+    return;
+  }
+  //置いた後の盤面の情報
+  let after_board = [];
+  for (let x = 0; x < cells; x++) {
+    for (let y = 0; y < cells; y++) {
+      const result = checkPut(x, y, COLOR,data);
+      if (result.length > 0) {
+        let copyBoard = JSON.parse(JSON.stringify(data));
+        for(let i=0;i<result.length;i++){
+          //rezultをcopyBoard[y][x]に上書き
+          copyBoard[result[i][1]][result[i][0]] = COLOR;
+        };
+        after_board.push(copyBoard);     
+        can_put.push(result);
+      };
+    }
+  }
+  return after_board;
+  //console.log(after_board);
+  //console.log(can_put,COLOR);
+};
+
+
+
+//refrectBoard用初期化
+function refInit() {
+  for (let i = 0; i < cells; i++) {
+    const tr = document.createElement("tr");
+    data[i] = Array(cells).fill(0);
+    for (let j = 0; j < cells; j++) {
+      const td = document.createElement("td");
+      const disk = document.createElement("div");
+      tr.appendChild(td);
+      td.appendChild(disk);
+      td.className = "cell";
+      td.onclick = clicked;
+    }
+    board.appendChild(tr);
+  }
+  switch (cells) {
+    case 4:
+      board.setAttribute('class', '');
+      board.classList.add("cell-4");
+      data.splice(4,1);
+      data.splice(4,1);
+      data.splice(4,1);
+      data.splice(4,1);
+      break;
+    case 6:
+      board.setAttribute('class', '');     
+      board.classList.add("cell-6");
+      data.splice(6,1);
+      data.splice(6,1);
+      break;
+    case 8:
+      board.setAttribute('class', '');
+  }
+}
+
+
+//盤面情報配列と次の手番を受け取り、オセロ盤面に反映させる
+function reflectBoard(refData,refTurn){
+  cells = refData.length;
+  board.innerHTML = "";
+  let numBlack = 0;
+  let numWhite = 0;
+  refInit();
+
+  if(refTurn === BLACK){
+    turn = true;
+  }else{
+    turn = false;
+  }
+
+  for(let x = 0;x < cells;x++){
+    for(let y = 0;y < cells;y++){
+      if(refData[y][x] === 1){ //黒の場合
+        putDisc(x,y,BLACK);
+        numBlack++;
+      }else if(refData[y][x] === -1){  //白の場合
+        putDisc(x,y,WHITE);
+        numWhite++;
+      }
+    }
+  }
+showTurn();
+}
+
+let testdata4 = [];
+testdata4[0] = [-1, -1, -1, 1];
+testdata4[1] = [0, -1, 1, -1];
+testdata4[2] = [0, 0, 0, 0];
+testdata4[3] = [1, -1, 1, 1];
+
+let testdata8 = [];
+testdata8[0] = [1, 1, 1, 1, 0, 0, 0, 0];
+testdata8[1] = [1, -1, 1, 1, 1, 0, 0, 0];
+testdata8[2] = [-1, -1, -1, 1, 0, 0, 0, 0];
+testdata8[3] = [0, -1, 1, -1, 1, 0, 0, 0];
+testdata8[4] = [0, 0, -1, -1, -1, 0, 0, 0];
+testdata8[5] = [0, 0, 0, 0, 0, 0, 0, 0];
+testdata8[6] = [0, 0, 0, 0, 0, 0, 0, 0];
+testdata8[7] = [0, 0, 0, 0, 0, 0, 0, 0];
+
+const evaluate = [];
+evaluate[0] = [120,-20,20,5,5,20,-20,120];
+evaluate[1] = [-20,-40,-5,-5,-5,-5,-40,-20];
+evaluate[2] = [20,-5,15,3,3,15,-5,20];
+evaluate[3] = [5,-5,3,3,3,3,-5,5];
+evaluate[4] = [5,-5,3,3,3,3,-5,5];
+evaluate[5] = [20,-5,15,3,3,15,-5,20];
+evaluate[6] = [-20,-40,-5,-5,-5,-5,-40,-20];
+evaluate[7] = [120,-20,20,5,5,20,-20,120];
+
+function staticBoard(staticData){
+  let point = 0;
+  if(staticData.length != 8){
+    window.alert("配列のサイズを確認してください")
+    return;
+  }
+
+  for(let x = 0;x < cells;x++){
+    for(let y = 0;y < cells;y++){
+      if(staticData[y][x] === 1){ //黒の場合
+        // console.log(staticData[y][x],evaluate[y][x]);
+        point += staticData[y][x] * evaluate[y][x];
+      }
+    }
+  }
+  return point;
+}
