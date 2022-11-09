@@ -137,6 +137,6 @@ Blockly.Hat['othello_put'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   let code = 'JavaScript' + '"' + '(function(x, y, color)';
   code += '{ firstCheck('+dropdown_board_x+','+dropdown_board_y+','+dropdown_color+');})"\n';
-  code += 'x y color ^($dummy)'
+  code += 'x y color ^()'
   return code;
 };
