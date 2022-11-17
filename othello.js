@@ -415,6 +415,8 @@ evaluate[5] = [20,-5,15,3,3,15,-5,20];
 evaluate[6] = [-20,-40,-5,-5,-5,-5,-40,-20];
 evaluate[7] = [120,-20,20,5,5,20,-20,120];
 
+
+//盤面配列を受け取り、評価値を返す
 function staticBoard(staticData){
   let point = 0;
   if(staticData.length != 8){
@@ -432,3 +434,58 @@ function staticBoard(staticData){
   }
   return point;
 }
+
+//リストを受け取り最大値を返す
+function max(list){
+  let max = 0;
+  for(let i = 0;i < list.length;i++){
+    if(list[i] > max){
+      max = list[i];
+    }
+  }
+  return max;
+}
+//リストを受け取り最小値を返す
+function min(list){
+  let min = 0;
+  for(let i = 0;i < list.length;i++){
+    if(list[i] < min){
+      min = list[i];
+    }
+  }
+  return min;
+}
+
+//初期状態配列を返す
+function hatStart(num){
+  let redata = [];
+  if(num === 4){
+   redata[0] = [0, 0, 0, 0];
+   redata[1] = [0, -1, 1, 0];
+   redata[2] = [0, 1, -1, 0];
+   redata[3] = [0, 0, 0, 0];
+  }else if(num === 6){
+    redata[0] = [0, 0, 0, 0, 0, 0];
+    redata[1] = [0, 0, 0, 0, 0, 0];
+    redata[2] = [0, 0, -1, 1, 0, 0];
+    redata[3] = [0, 0, 1, -1, 0, 0];
+    redata[4] = [0, 0, 0, 0, 0, 0];
+    redata[5] = [0, 0, 0, 0, 0, 0];
+  }else if(num === 8){
+    redata[0] = [0, 0, 0, 0, 0, 0, 0, 0];
+    redata[1] = [0, 0, 0, 0, 0, 0, 0, 0];
+    redata[2] = [0, 0, 0, 0, 0, 0, 0, 0];
+    redata[3] = [0, 0, 0, -1, 1, 0, 0, 0];
+    redata[4] = [0, 0, 0, 1, -1, 0, 0, 0];
+    redata[5] = [0, 0, 0, 0, 0, 0, 0, 0];
+    redata[6] = [0, 0, 0, 0, 0, 0, 0, 0];
+    redata[7] = [0, 0, 0, 0, 0, 0, 0, 0];    
+  }
+  console.log(redata);
+  return redata;
+}
+
+function returnPosition(){
+  return data;
+}
+

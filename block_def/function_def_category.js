@@ -158,7 +158,7 @@ Blockly.Blocks.def_func = {
         });
     },
 };
-
+//ゼミ確認
 mode = 1;
 
 Blockly.Hat.def_func = function (block) {

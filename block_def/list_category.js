@@ -208,6 +208,7 @@ Blockly.Blocks.list_variable = {
     },
 };
 
+//要確認
 Blockly.Hat.list_variable = function (block) {
     const list_name = block.getFieldValue('list_name');
     
@@ -241,7 +242,7 @@ Blockly.Hat.list_out_variable = function (block) {
     
     let OPERATOR = ""
     OPERATOR += list_name
-    OPERATOR += "."
+    //OPERATOR += "."
     return OPERATOR;
 };
 

@@ -275,3 +275,38 @@ $listの先頭に$elを追加したリストを返す。
   print("value=" value "\n")^()
   exit 0)
 |#
+
+
+;;;   2022追加分
+(difineCPS node ^(p l f) 
+  f p l)
+
+(difineCPS getp ^(n)
+  n (^(p l)p))
+
+(difineCPS getl ^(n)
+  n (^(p l)l))
+
+(difineCPS reptree ^(f a)
+  node a (map (reptree f)(f a)))
+
+(difineCPS cons ^(x y f)
+  f x y)
+
+(difineCPS car ^ (c)
+  c (^(x y)x))
+
+(difinePS cdr ^(c)
+  c (^(x y)y))
+
+(difineCPS reduce ^(f x al)
+  if(nil? al) x
+  ( car al ^(a)
+    cdr al ^(l)
+    f a ((reduce f x) l )))
+
+#|
+空列
+|#
+(defineCPS nil ^(R . return)
+  return true)
