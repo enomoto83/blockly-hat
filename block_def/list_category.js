@@ -214,7 +214,7 @@ Blockly.Hat.list_variable = function (block) {
     
     let OPERATOR = ""
     OPERATOR += list_name
-    OPERATOR += "."
+    OPERATOR += " "
     return OPERATOR;
 };
 
@@ -242,7 +242,7 @@ Blockly.Hat.list_out_variable = function (block) {
     
     let OPERATOR = ""
     OPERATOR += list_name
-    //OPERATOR += "."
+    //OPERATOR += " "
     return OPERATOR;
 };
 

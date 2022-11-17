@@ -1457,7 +1457,7 @@ module.exports = (function() {
 
     if ("startRule" in options) {
       if (!(options.startRule in peg$startRuleFunctions)) {
-        throw new Error("Can't start parsing from rule \"" + options.startRule + "\".");
+        throw new Error("Can't start parsing from rule \"" + options.startRule + "\" ");
       }
 
       peg$startRuleFunction = peg$startRuleFunctions[options.startRule];

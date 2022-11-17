@@ -197,7 +197,7 @@ Blockly.Blocks.Formal_arg_str = {
 };
 
 Blockly.Hat.Formal_arg_str = function (block) {
-    const arg = "\"" + block.getFieldValue('arg') + "\".";
+    const arg = "\"" + block.getFieldValue('arg') + "\" ";
     return arg;
 };
 
@@ -227,7 +227,7 @@ Blockly.Blocks.Formal_arg_num = {
 };
 
 Blockly.Hat.Formal_arg_num = function (block) {
-    const arg = block.getFieldValue('arg') + ".";
+    const arg = block.getFieldValue('arg') + " ";
     return arg;
 };
 
@@ -259,7 +259,7 @@ Blockly.Blocks.arg_str = {
 };
 
 Blockly.Hat.Formal_arg_str = function (block) {
-    const arg = "\"" + block.getFieldValue('arg') + "\".";
+    const arg = "\"" + block.getFieldValue('arg') + "\" ";
     return arg;
 };
 
@@ -288,7 +288,7 @@ Blockly.Blocks.arg_num = {
 };
 
 Blockly.Hat.Formal_arg_num = function (block) {
-    const arg = block.getFieldValue('arg') + ".";
+    const arg = block.getFieldValue('arg') + " ";
     return arg;
 };
 
@@ -326,18 +326,18 @@ Blockly.Blocks.arg = {
 };
 
 Blockly.Hat.arg = function (block) {    
-    let text_num = block.getFieldValue('string') + ".";
+    let text_num = block.getFieldValue('string') + " ";
     const arg = Blockly.Hat.statementToCode(block, 'arg_elem', Blockly.Hat.ORDER_FUNCTION_CALL);
     /*
     if(arg != "")
-        text_num = arg + "."
+        text_num = arg + " "
     return text_num;
     */
     switch(mode){
     case 1: /* call */
-        return arg+".";
+        return arg+" ";
     case 2: /* define */
-        return text_num+".";
+        return text_num+" ";
     }
 };
 
@@ -577,7 +577,7 @@ Blockly.Hat.call_def_func = function (block) {
     const call = Blockly.Hat.statementToCode(block, 'call', Blockly.Hat.ORDER_FUNCTION_CALL);
     const order_return = Blockly.Hat.statementToCode(block, 'return', Blockly.Hat.ORDER_FUNCTION_CALL);
     if (order_return != "")
-        period = ".";
+        period = " ";
     return call + period + order_return + ")";
 };
 

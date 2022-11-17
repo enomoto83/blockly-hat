@@ -85,7 +85,7 @@ Blockly.Blocks.num_statement = {
 };
 
 Blockly.Hat.num_statement = function (block) {
-  const num = block.getFieldValue('num') + ".";
+  const num = block.getFieldValue('num') + " ";
   return num;
 };
 
@@ -143,7 +143,7 @@ Blockly.Blocks.num2_statement = {
 };
 
 Blockly.Hat.num2_statement = function (block) {
-  const num = block.getFieldValue('num') + ".";
+  const num = block.getFieldValue('num') + " ";
   return num;
 };
 

@@ -134,7 +134,7 @@ Blockly.Blocks.arrangement_element = {
 };
 
 Blockly.Hat.arrangement_element = function (block) {
-    const element = block.getFieldValue('element') + ".";
+    const element = block.getFieldValue('element') + " ";
     return element;
 };
 
