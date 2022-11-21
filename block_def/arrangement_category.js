@@ -81,7 +81,7 @@ Blockly.Hat.arrangement = function (block) {
 
     const element = Blockly.Hat.statementToCode(block, 'element', Blockly.Hat.ORDER_FUNCTION_CALL);
     // 数値の長さを判定し、配列に分割した後にHat形式で出力
-    const elements = element.split('.');
+    const elements = element.split(' ');
     const elements_length = elements.length
 
     // 入力された数値の整列

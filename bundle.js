@@ -309,7 +309,7 @@ var HatInterpreter=(function( ){
 	    let fun=new HatVar(sexp_array[0].content);
 	    let args=[ ], cont=null;
 	    for(let i=1; i<sexp_array.length; ++i){
-		if(sexp_array[i].content=='.'){
+		if(sexp_array[i].content==' '){
 		    cont=SExp2HatExp(sexp_array[i+1], path);
 		    break;
 		}
@@ -945,7 +945,7 @@ var HatInterpreter=(function( ){
 	    for(let [key, value] of Object.entries(script.dictionary)){
 		if(this.dictionary[key]){
 		    console.warn('Warning: '+key+' is defined in '+
-				 script.name+' and '+this.name+'.');
+				 script.name+' and '+this.name+' ');
 		}else this.dictionary[key]=value;
 	    }
 	},
@@ -1079,7 +1079,7 @@ var HatInterpreter=(function( ){
 	    var list2=head.content;
 	    var len=list2.length;
 	    for(var i=0; i<len; ++i){
-		if(isSExpAtom(list2[i], '.')) break;
+		if(isSExpAtom(list2[i], ' ')) break;
 		pars.push(SExp2Var(list2[i], path));
 	    }
 	    if(++i<len) contpar=SExp2Var(list2[i], path);
@@ -1098,7 +1098,7 @@ var HatInterpreter=(function( ){
 	var array2=[ ];
 	var tail=null;
 	for(var i=start; i<len; ++i){
-	    if(isSExpAtom(array[i], '.')){
+	    if(isSExpAtom(array[i], ' ')){
 		tail=SExp2HatExp(array[++i], path);
 		break;
 	    }

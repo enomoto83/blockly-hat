@@ -155,7 +155,7 @@ Blockly.Hat.add = function (block) {
   console.log(arg);
 
   // 数値の長さを判定し、配列に分割した後にHat形式で出力
-  const nums = arg.split('.');
+  const nums = arg.split(' ');
   const nums_length = nums.length
 
   const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
