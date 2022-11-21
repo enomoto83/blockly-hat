@@ -305,6 +305,22 @@ $listの先頭に$elを追加したリストを返す。
     cdr al ^(l)
     f a ((reduce f x) l )))
 
+(difineCPS map ^(f)
+  reduce (comp cons f) nil)
+
+(difineCPS comp ^(f g h)
+  g h ^(gh)
+  f gh)
+
+(difineCPS redtree ^(f g a n)
+  f (car n) (redtreeap f g a (cdr n)))
+
+(difineCPS redtreeap ^(f g a c)
+  if(nil? c) a
+  (g (redtree f g a (car c)) (redtreeap f g a (cdr c))))
+
+
+
 #|
 空列
 |#
